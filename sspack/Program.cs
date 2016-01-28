@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace sspack
 {
@@ -194,6 +195,14 @@ namespace sspack
 			{
 				inputFiles.AddRange(arguments.input);
 			}
+
+            foreach (var wildcard in inputFiles.Where(p => p.Contains('*')).ToList()) {
+                string pattern = Path.GetFileName(wildcard);
+                string relDir = wildcard.Substring(0, wildcard.Length - pattern.Length);
+                string absPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relDir));
+                inputFiles.AddRange(Directory.GetFiles(absPath, pattern));
+                inputFiles.Remove(wildcard);
+            }
 
 			foreach (var str in inputFiles)
 			{
