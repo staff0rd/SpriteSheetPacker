@@ -164,7 +164,7 @@ namespace sspack
 				{
 					if (File.Exists(arguments.map))
 						File.Delete(arguments.map);
-					mapExporter.Save(arguments.map, outputMap);
+					mapExporter.Save(arguments.map, outputMap, arguments.image);
 				}
 				catch (Exception e)
 				{

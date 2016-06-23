@@ -40,7 +40,7 @@ namespace SpriteSheetPacker.XnaExporters
 			get { return "xml"; }
 		}
 
-		public void Save(string filename, Dictionary<string, Rectangle> map)
+		public void Save(string filename, Dictionary<string, Rectangle> map, string imageFileName)
 		{
 			using (StreamWriter writer = new StreamWriter(filename))
 			{

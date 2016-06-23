@@ -7,7 +7,7 @@ namespace SpriteSheetPacker.JsonExporters
 {
     public class JSONExporter : IMapExporter
     {
-        public string MapExtension
+        public virtual string MapExtension
         {
             get
             {
@@ -15,17 +15,19 @@ namespace SpriteSheetPacker.JsonExporters
             }
         }
 
-        public void Save(string filename, Dictionary<string, Rectangle> map)
+        public virtual void Save(string filename, Dictionary<string, Rectangle> map, string imageFileName)
         {
             using (StreamWriter streamWriter = new StreamWriter(filename))
             {
+                streamWriter.WriteLine("{");
                 WriteFrames(map, streamWriter);
+                streamWriter.WriteLine("}");
             }
         }
 
-        private static void WriteFrames(Dictionary<string, Rectangle> map, StreamWriter streamWriter)
+        protected static void WriteFrames(Dictionary<string, Rectangle> map, StreamWriter streamWriter)
         {
-            streamWriter.WriteLine("{\"frames\":{");
+            streamWriter.WriteLine("\"frames\":{");
             streamWriter.WriteLine("");
             int num = 0;
             foreach (KeyValuePair<string, Rectangle> current in map)
@@ -54,7 +56,7 @@ namespace SpriteSheetPacker.JsonExporters
                     streamWriter.WriteLine("}");
                 }
             }
-            streamWriter.WriteLine("}}");
+            streamWriter.WriteLine("}");
         }
     }
 }

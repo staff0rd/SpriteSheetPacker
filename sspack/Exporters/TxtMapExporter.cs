@@ -37,7 +37,7 @@ namespace sspack
 			get { return "txt"; }
 		}
 
-		public void Save(string filename, Dictionary<string, Rectangle> map)
+		public void Save(string filename, Dictionary<string, Rectangle> map, string imageFileName)
 		{
 			// copy the files list and sort alphabetically
 			string[] keys = new string[map.Count];

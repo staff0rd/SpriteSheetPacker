@@ -44,6 +44,6 @@ namespace sspack
 		/// </summary>
 		/// <param name="filename">The file to which the map should be saved.</param>
 		/// <param name="map">The map of the locations within the output image where each subimage is found. The strings are full file paths to the original images.</param>
-		void Save(string filename, Dictionary<string, Rectangle> map);
+		void Save(string filename, Dictionary<string, Rectangle> map, string imageFileName);
 	}
 }
